@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiesta de Graduación de Marisol · 13 de Junio, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Warmer, floral palette inspired by the invitation */
+    --warm-dark: #2D1B14;
+    --cocoa: #3A2418;
+    --magenta: #C8417F;
+    --magenta-deep: #A82F6A;
+    --coral: #E89067;
+    --coral-deep: #D17451;
+    --rose: #F2B6C6;
+    --rose-soft: #F9DCE2;
+    --sage: #7B9C5F;
+    --forest: #4A6E4F;
+    --gold: #C9A84C;
+    --gold-hover: #b8943e;
+    --cream: #FAF4E8;
+    --off-white: #FFF8F0;
+    --warm-white: #FFFBF5;
+    --text-dark: #3A2418;
+    --dusty-rose: #D4967A;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--text-dark);
+    background: var(--warm-dark);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a { color: inherit; }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─────────── NAV ─────────── */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(45, 27, 20, 0.96);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+  }
+  .nav.hidden { transform: translateY(-100%); }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--rose);
+    font-size: 20px;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--magenta); }
+
+  .hamburger {
+    display: none;
+    width: 28px;
+    height: 22px;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--magenta);
+  }
+
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: var(--warm-dark);
+    z-index: 1100;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 28px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .mobile-menu a:hover { color: var(--magenta); }
+  .mobile-close {
+    position: absolute;
+    top: 22px;
+    right: 28px;
+    background: transparent;
+    border: none;
+    color: var(--magenta);
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  /* ─────────── HERO ─────────── */
+  .hero {
+    height: 100vh;
+    background: var(--warm-dark);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+  }
+  .hero-photo {
+    position: relative;
+    width: 55%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .hero-photo::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, var(--warm-dark));
+    pointer-events: none;
+  }
+  .hero-text {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3rem;
+  }
+  .hero-text > * {
+    opacity: 0;
+    animation: fadeInUp 0.7s ease forwards;
+  }
+  .hero-text > *:nth-child(1)  { animation-delay: 0.10s; }
+  .hero-text > *:nth-child(2)  { animation-delay: 0.30s; }
+  .hero-text > *:nth-child(3)  { animation-delay: 0.50s; }
+  .hero-text > *:nth-child(4)  { animation-delay: 0.65s; }
+  .hero-text > *:nth-child(5)  { animation-delay: 0.80s; }
+  .hero-text > *:nth-child(6)  { animation-delay: 0.95s; }
+  .hero-text > *:nth-child(7)  { animation-delay: 1.10s; }
+  .hero-text > *:nth-child(8)  { animation-delay: 1.25s; }
+  .hero-text > *:nth-child(9)  { animation-delay: 1.40s; }
+  .hero-text > *:nth-child(10) { animation-delay: 1.55s; }
+
+  .eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--magenta);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .gold-line {
+    width: 50px;
+    height: 1px;
+    background: var(--magenta);
+    margin-bottom: 20px;
+    border: 0;
+  }
+  .hero-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 78px;
+    color: var(--cream);
+    line-height: 0.9;
+    margin-bottom: 24px;
+  }
+  .hero-honor {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--coral);
+    margin-bottom: 8px;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 38px;
+    color: var(--magenta);
+    margin-bottom: 16px;
+  }
+  .hero-degree {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--cream);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .star-divider {
+    color: var(--coral);
+    font-size: 12px;
+    letter-spacing: 12px;
+    margin-bottom: 28px;
+  }
+  .schedule-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+  }
+  .schedule-table tr {
+    border-bottom: 1px solid rgba(200, 65, 127, 0.25);
+  }
+  .schedule-table td {
+    padding: 8px 0;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+  }
+  .schedule-table td:first-child { color: var(--cream); }
+  .schedule-table td:last-child {
+    color: var(--coral);
+    text-align: right;
+  }
+  .hero-venue {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: var(--rose);
+    margin-bottom: 32px;
+  }
+  .btn {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  .btn-magenta {
+    background: var(--magenta);
+    color: var(--cream);
+    border: 1px solid var(--magenta);
+    padding: 14px 36px;
+  }
+  .btn-magenta:hover {
+    background: var(--magenta-deep);
+    border-color: var(--magenta-deep);
+  }
+  .btn-outline-magenta {
+    border: 1px solid var(--magenta);
+    color: var(--magenta);
+    background: transparent;
+    padding: 14px 36px;
+  }
+  .btn-outline-magenta:hover {
+    background: var(--magenta);
+    color: var(--cream);
+  }
+  .btn-coral {
+    background: var(--coral);
+    color: var(--warm-dark);
+    border: 1px solid var(--coral);
+    padding: 14px 36px;
+  }
+  .btn-coral:hover {
+    background: var(--coral-deep);
+    border-color: var(--coral-deep);
+    color: var(--cream);
+  }
+  .hero-cta { align-self: flex-start; }
+
+  /* ─────────── SECTION DEFAULTS ─────────── */
+  section {
+    padding: 100px 20px;
+    position: relative;
+  }
+  .section-charcoal {
+    background: var(--warm-dark);
+    color: var(--cream);
+  }
+  .section-light {
+    background: var(--off-white);
+    color: var(--text-dark);
+  }
+  .section-rose {
+    background: linear-gradient(180deg, var(--off-white) 0%, var(--rose-soft) 100%);
+    color: var(--text-dark);
+  }
+  .section-header { text-align: center; }
+  .section-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--magenta);
+    text-transform: uppercase;
+  }
+  .section-eyebrow.coral { color: var(--coral); }
+  .section-eyebrow.sage  { color: var(--sage); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 1.05;
+    margin-top: 6px;
+  }
+  .section-title.dark  { color: var(--warm-dark); }
+  .section-title.light { color: var(--cream); }
+  .gold-line.center {
+    margin: 16px auto 32px;
+  }
+  .gold-line.magenta { background: var(--magenta); }
+  .gold-line.coral   { background: var(--coral); }
+  .gold-line.sage    { background: var(--sage); }
+  .gold-line.gold    { background: var(--gold); }
+
+  /* ─────────── RSVP ─────────── */
+  .rsvp-container {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .rsvp-deadline {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--magenta);
+    letter-spacing: 0.08em;
+    border-left: 2px solid var(--magenta);
+    padding-left: 12px;
+    display: inline-block;
+    margin: 16px 0 8px;
+  }
+  .rsvp-subnote {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: var(--coral-deep);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .rsvp-field {
+    display: flex;
+    flex-direction: column;
+  }
+  .rsvp-field label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warm-dark);
+    margin-bottom: 8px;
+  }
+  .rsvp-field input,
+  .rsvp-field textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 0;
+    border: 1px solid rgba(200, 65, 127, 0.3);
+    background: white;
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text-dark);
+    resize: vertical;
+  }
+  .rsvp-field input:focus,
+  .rsvp-field textarea:focus {
+    border-color: var(--magenta);
+    outline: none;
+    box-shadow: none;
+  }
+  .rsvp-submit {
+    width: 100%;
+    padding: 18px;
+    border-radius: 0;
+    border: none;
+    background: var(--magenta);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.3s ease;
+  }
+  .rsvp-submit:hover { background: var(--magenta-deep); }
+  a.rsvp-submit {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+  .rsvp-cta {
+    text-align: center;
+  }
+  .rsvp-cta-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--warm-dark);
+    line-height: 1.5;
+    margin-bottom: 32px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .rsvp-cta-note {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-dark);
+    opacity: 0.6;
+    margin-top: 18px;
+  }
+
+  /* ─────────── DRESS CODE ─────────── */
+  .dress-container {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .dress-body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--cream);
+    line-height: 1.85;
+    max-width: 520px;
+    margin: 0 auto 20px;
+  }
+  .dress-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    color: var(--coral);
+    margin-bottom: 36px;
+  }
+
+  /* ─────────── GIFTS ─────────── */
+  .gifts-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .gifts-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--magenta-deep);
+    line-height: 1.7;
+  }
+  .gifts-body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--text-dark);
+    line-height: 1.85;
+    max-width: 500px;
+    margin: 20px auto 40px;
+  }
+  .pay-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .pay-card {
+    width: 240px;
+    padding: 28px 24px;
+    text-align: center;
+    background: white;
+    border-radius: 0;
+    border: 1px solid rgba(200, 65, 127, 0.3);
+    border-top: 3px solid var(--magenta);
+    box-shadow: 0 4px 20px rgba(200, 65, 127, 0.08);
+  }
+  .pay-card.coral {
+    border-top: 3px solid var(--coral);
+    border-color: rgba(232, 144, 103, 0.35);
+    box-shadow: 0 4px 20px rgba(232, 144, 103, 0.1);
+  }
+  .pay-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--warm-dark);
+  }
+  .pay-card .handle {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--magenta);
+    margin-top: 8px;
+  }
+  .pay-card.coral .handle { color: var(--coral-deep); }
+  .pay-card .helper {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    color: #5a4a3a;
+    margin-top: 6px;
+  }
+  .pay-btn {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 12px 16px;
+    border-radius: 0;
+    width: 100%;
+    display: block;
+    margin-top: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .pay-btn-magenta {
+    background: var(--magenta);
+    color: var(--cream);
+    border: none;
+  }
+  .pay-btn-magenta:hover { background: var(--magenta-deep); }
+  .pay-btn-outline-coral {
+    border: 1px solid var(--coral);
+    color: var(--coral-deep);
+    background: transparent;
+  }
+  .pay-btn-outline-coral:hover {
+    background: var(--coral);
+    color: var(--warm-dark);
+  }
+  .stars {
+    color: var(--magenta);
+    font-size: 12px;
+    letter-spacing: 12px;
+    margin-top: 40px;
+    text-align: center;
+    display: block;
+  }
+
+  /* ─────────── HOTEL ─────────── */
+  .hotel-intro {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    color: var(--cream);
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 56px;
+    line-height: 1.8;
+  }
+  .hotel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .hotel-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(200, 65, 127, 0.3);
+    padding: 32px;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .hotel-card.coral { border-color: rgba(232, 144, 103, 0.35); }
+  .hotel-card.sage  { border-color: rgba(123, 156, 95, 0.4); }
+  .hotel-badge {
+    background: var(--magenta);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    display: inline-block;
+    margin-bottom: 14px;
+    align-self: flex-start;
+  }
+  .hotel-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .hotel-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--rose);
+    margin-bottom: 12px;
+  }
+  .hotel-card.coral .hotel-tag { color: var(--coral); }
+  .hotel-card.sage  .hotel-tag { color: var(--sage); }
+  .hotel-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--magenta);
+    margin-bottom: 14px;
+  }
+  .hotel-details {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--cream);
+    line-height: 1.7;
+    flex-grow: 1;
+  }
+  .hotel-btn {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 13px 16px;
+    border-radius: 0;
+    width: 100%;
+    margin-top: 20px;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .hotel-btn.solid-magenta {
+    background: var(--magenta);
+    color: var(--cream);
+    border: none;
+  }
+  .hotel-btn.solid-magenta:hover { background: var(--magenta-deep); }
+  .hotel-btn.outline-coral {
+    border: 1px solid var(--coral);
+    color: var(--coral);
+    background: transparent;
+  }
+  .hotel-btn.outline-coral:hover {
+    background: var(--coral);
+    color: var(--warm-dark);
+  }
+  .hotel-btn.outline-sage {
+    border: 1px solid var(--sage);
+    color: var(--sage);
+    background: transparent;
+  }
+  .hotel-btn.outline-sage:hover {
+    background: var(--sage);
+    color: var(--cream);
+  }
+
+  /* ─────────── FAMILY FUN ─────────── */
+  .family-container {
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .family-card {
+    background: linear-gradient(180deg, var(--warm-dark) 0%, var(--cocoa) 100%);
+    border: 1px solid var(--coral);
+    padding: 48px 40px;
+    border-radius: 0;
+    max-width: 660px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .family-emoji {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .family-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .family-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 17px;
+    color: var(--coral);
+    margin-bottom: 28px;
+  }
+  .family-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: var(--cream);
+    line-height: 2.2;
+    text-align: left;
+    max-width: 460px;
+  }
+  .family-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--rose);
+    margin-top: 20px;
+    margin-bottom: 28px;
+  }
+  .family-directions {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--rose);
+    display: block;
+    text-decoration: underline;
+    margin-top: 4px;
+  }
+
+  /* ─────────── VENUE ─────────── */
+  .venue-container {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .venue-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 64px;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-top: 6px;
+  }
+  .venue-address {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--coral);
+    letter-spacing: 0.1em;
+    margin-bottom: 48px;
+  }
+  .venue-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(200, 65, 127, 0.35);
+    padding: 48px;
+    max-width: 520px;
+    margin: 0 auto 40px;
+    border-radius: 0;
+  }
+  .venue-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(232, 144, 103, 0.2);
+    text-align: left;
+  }
+  .venue-row:last-child { border-bottom: none; }
+  .venue-event {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--cream);
+  }
+  .venue-time {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    color: var(--coral);
+  }
+  .venue-attire {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--rose);
+    margin-bottom: 36px;
+    display: block;
+  }
+  .venue-cta {
+    background: var(--magenta);
+    color: var(--cream);
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border-radius: 0;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  .venue-cta:hover { background: var(--magenta-deep); }
+
+  /* ─────────── EXPLORE ─────────── */
+  .explore-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--coral-deep);
+    margin-top: 6px;
+  }
+  .explore-intro {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: #5a4a3a;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 56px;
+    line-height: 1.85;
+  }
+  .category-heading {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    border-bottom: 1px solid rgba(200, 65, 127, 0.35);
+    padding-bottom: 8px;
+    margin: 0 auto 24px;
+    max-width: 960px;
+    display: block;
+  }
+  .category-heading.coral {
+    color: var(--coral-deep);
+    border-bottom-color: rgba(232, 144, 103, 0.45);
+  }
+  .category-heading.sage {
+    color: var(--sage);
+    border-bottom-color: rgba(123, 156, 95, 0.5);
+  }
+  .category-heading.gold {
+    color: var(--gold);
+    border-bottom-color: rgba(201, 168, 76, 0.4);
+  }
+  .explore-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto 56px;
+  }
+  .explore-card {
+    background: white;
+    border: 1px solid rgba(58, 36, 24, 0.1);
+    border-top: 3px solid var(--magenta);
+    padding: 28px;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 14px rgba(58, 36, 24, 0.05);
+  }
+  .explore-card.coral { border-top-color: var(--coral); }
+  .explore-card.sage  { border-top-color: var(--sage); }
+  .explore-card.gold  { border-top-color: var(--gold); }
+  .explore-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 21px;
+    color: var(--warm-dark);
+    margin-bottom: 6px;
+  }
+  .explore-badge {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--rose-soft);
+    color: var(--magenta-deep);
+    padding: 4px 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+    align-self: flex-start;
+  }
+  .explore-card.coral .explore-badge {
+    background: #FCE3D4;
+    color: var(--coral-deep);
+  }
+  .explore-card.sage .explore-badge {
+    background: #E5EBD9;
+    color: var(--forest);
+  }
+  .explore-card.gold .explore-badge {
+    background: #F5ECD7;
+    color: #6B5320;
+  }
+  .explore-address {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--coral-deep);
+    margin-bottom: 10px;
+  }
+  .explore-desc {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: #5a4a3a;
+    line-height: 1.75;
+    flex-grow: 1;
+  }
+  .explore-links {
+    margin-top: 16px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .explore-links a {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--magenta);
+    text-decoration: none;
+    border-bottom: 1px solid var(--magenta);
+    padding-bottom: 1px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+  .explore-links a:hover {
+    color: var(--magenta-deep);
+    border-color: var(--magenta-deep);
+  }
+  .explore-card.coral .explore-links a {
+    color: var(--coral-deep);
+    border-bottom-color: var(--coral-deep);
+  }
+  .explore-card.sage .explore-links a {
+    color: var(--forest);
+    border-bottom-color: var(--forest);
+  }
+  .explore-card.gold .explore-links a {
+    color: #8a7530;
+    border-bottom-color: #8a7530;
+  }
+  .explore-footer-link {
+    text-align: center;
+    margin-top: 8px;
+  }
+  .explore-footer-link a {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: var(--magenta);
+    border-bottom: 1px solid var(--magenta);
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  /* ─────────── FOOTER ─────────── */
+  footer {
+    background: var(--warm-dark);
+    border-top: 1px solid rgba(200, 65, 127, 0.4);
+    padding: 64px 20px;
+    text-align: center;
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--magenta);
+    margin-bottom: 10px;
+  }
+  .footer-degree {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--cream);
+    text-transform: uppercase;
+  }
+  .footer-when {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--coral);
+    margin-top: 6px;
+  }
+  .footer-stars {
+    color: var(--magenta);
+    font-size: 12px;
+    letter-spacing: 12px;
+    margin: 20px 0;
+    display: block;
+  }
+  .footer-thanks {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--cream);
+  }
+
+  /* ─────────── RESPONSIVE ─────────── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .hero {
+      flex-direction: column;
+      height: auto;
+    }
+    .hero-photo {
+      width: 100%;
+      height: 65vh;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 65vh;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-photo::after {
+      top: auto;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      height: 35%;
+      background: linear-gradient(to bottom, transparent, var(--warm-dark));
+    }
+    .hero-text {
+      width: 100%;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      align-items: center;
+    }
+    .hero-heading { font-size: 52px; }
+    .hero-name { font-size: 28px; }
+    .schedule-table { max-width: 360px; }
+    .star-divider, .gold-line {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-title { font-size: 40px; }
+    .venue-title { font-size: 48px; }
+    .venue-card { padding: 32px 24px; }
+    .family-card { padding: 36px 24px; }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 72px 16px; }
+    .hero-heading { font-size: 44px; }
+    .hero-name { font-size: 24px; }
+    .section-title { font-size: 34px; }
+    .venue-title { font-size: 40px; }
+    .pay-card { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═════════════ NAV ═════════════ -->
+<nav class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">Marisol · 2026</a>
+    <ul class="nav-links">
+      <li><a href="#rsvp">Confirmar</a></li>
+      <li><a href="#dress-code">Vestimenta</a></li>
+      <li><a href="#gifts">Regalos</a></li>
+      <li><a href="#hotel">Hotel</a></li>
+      <li><a href="#family">Familias</a></li>
+      <li><a href="#venue">Lugar</a></li>
+      <li><a href="#explore">Explora Sac</a></li>
+    </ul>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileCloseBtn" aria-label="Cerrar menú">✕</button>
+  <a href="#rsvp">Confirmar</a>
+  <a href="#dress-code">Vestimenta</a>
+  <a href="#gifts">Regalos</a>
+  <a href="#hotel">Hotel</a>
+  <a href="#family">Familias</a>
+  <a href="#venue">Lugar</a>
+  <a href="#explore">Explora Sac</a>
+</div>
+
+<!-- ═════════════ HERO ═════════════ -->
+<section class="hero" id="home">
+  <div class="hero-photo">
+    <img src="marisol-hero.jpg" alt="Marisol Ibarra-Bouslama">
+  </div>
+  <div class="hero-text">
+    <div class="eyebrow">Escuela de Negocios de Posgrado de UC Davis</div>
+    <hr class="gold-line">
+    <h1 class="hero-heading">Fiesta de<br>Graduación</h1>
+    <div class="hero-honor">en honor a</div>
+    <div class="hero-name">Marisol Ibarra-Bouslama</div>
+    <div class="hero-degree">Maestría en Administración de Empresas · Clase del 2026</div>
+    <div class="star-divider">✦ ✦ ✦</div>
+    <table class="schedule-table">
+      <tr><td>Hora de Llegada</td><td>5:00 PM</td></tr>
+      <tr><td>Cena</td><td>5:30 PM – 7:30 PM</td></tr>
+      <tr><td>Banda y Baile</td><td>6:00 PM – 11:00 PM</td></tr>
+    </table>
+    <div class="hero-venue">Estate Farms · Sacramento, California</div>
+    <a href="#rsvp" class="btn btn-magenta hero-cta">Confirmar Asistencia →</a>
+  </div>
+</section>
+
+<!-- ═════════════ RSVP ═════════════ -->
+<section class="section-rose" id="rsvp">
+  <div class="rsvp-container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Acompáñanos</div>
+      <h2 class="section-title dark">¿Nos Acompañarás?</h2>
+      <hr class="gold-line center magenta">
+      <div class="rsvp-deadline">Fecha límite: viernes, 23 de mayo</div>
+      <div class="rsvp-subnote">Por favor confirma tu asistencia antes del viernes, 23 de mayo · Estate Farms, Sacramento</div>
+    </div>
+
+    <div class="rsvp-cta reveal">
+      <p class="rsvp-cta-text">Confirma tu asistencia con un clic — tomará menos de un minuto. Te llevará a un breve formulario donde podrás compartir tu nombre, número de invitados y cualquier restricción alimentaria.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0K5XQYdYZg7vbevWmgyOoUHOlJLXxEVdoyOgjnjKcI/viewform" target="_blank" rel="noopener" class="rsvp-submit">¡Cuenta Conmigo! ✦</a>
+      <p class="rsvp-cta-note">Se abre en una nueva ventana</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ DRESS CODE ═════════════ -->
+<section class="section-charcoal" id="dress-code">
+  <div class="dress-container reveal">
+    <div class="section-eyebrow coral">Vestimenta</div>
+    <h2 class="section-title light">Viste para la Ocasión</h2>
+    <hr class="gold-line center coral">
+    <p class="dress-body">Botas y sombreros bienvenidos. Estamos dándole vida al estilo MBA Chic Western — piensa en piezas entalladas con botas, siluetas elegantes con sombrero vaquero, florales, flecos y todo el encanto. Ven vestid@ para impresionar en el rancho.</p>
+    <p class="dress-tag">Botas y sombreros bienvenidos.</p>
+    <a href="https://www.pinterest.com/momentsofmarisol/western-chic-dress-code-inspo/" target="_blank" rel="noopener" class="btn btn-coral">Inspiración en Pinterest →</a>
+  </div>
+</section>
+
+<!-- ═════════════ GIFTS ═════════════ -->
+<section class="section-light" id="gifts">
+  <div class="gifts-container reveal">
+    <div class="section-eyebrow">Regalos</div>
+    <h2 class="section-title dark">Un Regalo del Corazón</h2>
+    <hr class="gold-line center magenta">
+    <p class="gifts-tag">Tu presencia es el mejor regalo.</p>
+    <p class="gifts-body">Para quienes deseen celebrar este logro con un regalo, una contribución para el próximo capítulo de Marisol — incluyendo su MBA — se agradece de corazón.</p>
+
+    <div class="pay-cards">
+      <div class="pay-card">
+        <h3>Venmo</h3>
+        <div class="handle">@marisolibarra</div>
+        <div class="helper">Toca para abrir Venmo</div>
+        <a href="https://venmo.com/marisolibarra" target="_blank" rel="noopener" class="pay-btn pay-btn-magenta">Enviar por Venmo →</a>
+      </div>
+      <div class="pay-card coral">
+        <h3>Zelle</h3>
+        <div class="handle">323-681-2687</div>
+        <div class="helper">Envía desde tu app bancaria</div>
+        <button id="zelle-btn" class="pay-btn pay-btn-outline-coral" type="button">Copiar Número</button>
+      </div>
+    </div>
+
+    <span class="stars">✦  ✦  ✦</span>
+  </div>
+</section>
+
+<!-- ═════════════ HOTEL ═════════════ -->
+<section class="section-charcoal" id="hotel">
+  <div class="section-header reveal">
+    <div class="section-eyebrow coral">Dónde Hospedarse</div>
+    <h2 class="section-title light">Descansa tus Botas en Sacramento</h2>
+    <hr class="gold-line center coral">
+    <p class="hotel-intro">Hemos reunido opciones para todos los estilos y presupuestos. Muchos invitados vienen del Sur de California — aquí están los lugares para hospedarse cerca de la celebración.</p>
+  </div>
+
+  <div class="hotel-grid">
+    <div class="hotel-card reveal">
+      <span class="hotel-badge">Tarifa de Grupo · Reserva en Mayo</span>
+      <h3 class="hotel-name">Element Sacramento Airport</h3>
+      <div class="hotel-tag">Moderno · Cerca del Aeropuerto</div>
+      <div class="hotel-price">$160 / noche</div>
+      <p class="hotel-details">Bloque especial de habitaciones reservado para los invitados de Marisol. Reserva antes de la primera semana de mayo — el bloque expira entonces.</p>
+      <a href="#" class="hotel-btn solid-magenta">Reservar Tarifa de Grupo →</a>
+    </div>
+
+    <div class="hotel-card coral reveal">
+      <h3 class="hotel-name">Kimpton Sawyer Hotel</h3>
+      <div class="hotel-tag">Lujo en el Centro</div>
+      <p class="hotel-details">500 J Street, Centro de Sacramento. Piscina en la azotea, comida farm-to-fork, a pasos del Golden 1 Center. La dirección más elegante de Sacramento.</p>
+      <a href="https://www.sawyerhotel.com/" target="_blank" rel="noopener" class="hotel-btn outline-coral">Reservar en Kimpton →</a>
+    </div>
+
+    <div class="hotel-card sage reveal">
+      <h3 class="hotel-name">Hyatt House Sacramento / Midtown</h3>
+      <div class="hotel-tag">Midtown · Excelente Valor</div>
+      <p class="hotel-details">Midtown Sacramento. Suites cómodas con cocina, a poca distancia de restaurantes, el mercado de productores y Old Sacramento.</p>
+      <a href="https://www.hyatt.com/hyatt-house/en-US/smfxs-hyatt-house-sacramento-midtown" target="_blank" rel="noopener" class="hotel-btn outline-sage">Reservar en Hyatt House →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ FAMILY FUN ═════════════ -->
+<section class="section-light" id="family">
+  <div class="family-container reveal">
+    <div class="section-eyebrow coral">Familias y Niños</div>
+    <h2 class="section-title dark">Pequeños Vaqueros Bienvenidos</h2>
+    <hr class="gold-line center coral">
+
+    <div class="family-card">
+      <span class="family-emoji">🏛️</span>
+      <h3>Tour del Capitolio de California</h3>
+      <div class="family-tagline">Un pedazo de la historia de California — gratis para todas las edades</div>
+      <ul class="family-list">
+        <li>📍&nbsp;&nbsp;1315 10th St, Sacramento, CA 95814</li>
+        <li>🕛&nbsp;&nbsp;El tour se reúne a las 12:00 PM · Punto de encuentro: entrada principal</li>
+        <li>📅&nbsp;&nbsp;Reserva tu lugar antes del 30 de mayo</li>
+        <li>✓&nbsp;&nbsp;&nbsp;Entrada gratuita · Todas las edades bienvenidas</li>
+      </ul>
+      <p class="family-note">Para reservar tu lugar, mándale un mensaje de texto a Marisol al <strong>323-681-2687</strong> para confirmar — antes del 30 de mayo.</p>
+      <a href="sms:+13236812687?&body=%C2%A1Hola%20Marisol!%20Quiero%20reservar%20mi%20lugar%20para%20el%20tour%20del%20Capitolio%20del%2013%20de%20junio.%20Mi%20nombre%20es%20%5Btu%20nombre%5D%20y%20vendr%C3%A9%20con%20%5B%23%5D%20persona(s)." class="btn btn-outline-magenta" style="border-color: var(--coral); color: var(--coral);">Mandar Mensaje a Marisol →</a>
+      <a href="https://maps.google.com/?q=1315+10th+St+Sacramento+CA+95814" target="_blank" rel="noopener" class="family-directions">Cómo Llegar →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ VENUE ═════════════ -->
+<section class="section-charcoal" id="venue">
+  <div class="venue-container reveal">
+    <div class="section-eyebrow">El Lugar</div>
+    <h2 class="venue-title">Estate Farms</h2>
+    <hr class="gold-line center magenta" style="margin-bottom:20px;">
+    <div class="venue-address">6240 Excelsior Road · Sacramento, California</div>
+
+    <div class="venue-card">
+      <div class="venue-row">
+        <span class="venue-event">🌸 Hora de Llegada</span>
+        <span class="venue-time">5:00 PM</span>
+      </div>
+      <div class="venue-row">
+        <span class="venue-event">🍽 Cena</span>
+        <span class="venue-time">5:30 PM – 7:30 PM</span>
+      </div>
+      <div class="venue-row">
+        <span class="venue-event">🎶 Banda y Baile</span>
+        <span class="venue-time">6:00 PM – 11:00 PM</span>
+      </div>
+    </div>
+
+    <span class="venue-attire">Vestimenta: Botas y sombreros bienvenidos ✦</span>
+    <a href="https://maps.google.com/?q=6240+Excelsior+Road+Sacramento+California" target="_blank" rel="noopener" class="venue-cta">Cómo Llegar →</a>
+  </div>
+</section>
+
+<!-- ═════════════ EXPLORE ═════════════ -->
+<section class="section-light" id="explore">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Guía del Camino</div>
+    <h2 class="section-title dark">Explora Sacramento</h2>
+    <p class="explore-tag">Curado especialmente para ti — sobre todo para nuestros amigos del Sur de California.</p>
+    <hr class="gold-line center magenta" style="margin: 16px auto 40px;">
+    <p class="explore-intro">Sacramento es más que la capital de California — es una ciudad farm-to-fork con una vibrante escena artística, parques hermosos e historia del Oeste. Aquí está cómo pasar el fin de semana.</p>
+  </div>
+
+  <!-- ☀️ Sábado por la mañana -->
+  <div class="category-heading">☀️ Sábado por la Mañana — Antes de la Fiesta</div>
+  <div class="explore-grid">
+    <div class="explore-card reveal">
+      <h3 class="explore-name">Midtown Farmers Market</h3>
+      <span class="explore-badge">Mercado Semanal</span>
+      <div class="explore-address">W St y 20th St, Midtown Sacramento · Sáb 8:00 AM – 1:00 PM</div>
+      <p class="explore-desc">Comienza tu sábado bien. El querido mercado de productores de Sacramento trae productos locales, flores, puestos de comida y energía comunitaria — el calentamiento perfecto antes de la fiesta esta noche.</p>
+      <div class="explore-links">
+        <a href="https://maps.google.com/?q=Midtown+Farmers+Market+Sacramento" target="_blank" rel="noopener">Cómo Llegar →</a>
+        <a href="https://www.visitsacramento.com/" target="_blank" rel="noopener">Visitar Sitio →</a>
+      </div>
+    </div>
+
+    <div class="explore-card reveal">
+      <h3 class="explore-name">Temple Coffee Roasters</h3>
+      <span class="explore-badge">Tostador Local</span>
+      <div class="explore-address">Varias ubicaciones · Se recomienda 2200 K St</div>
+      <p class="explore-desc">El querido tostador de café especializado de Sacramento. Toma un pour-over o un latte antes de empezar el día.</p>
+      <div class="explore-links">
+        <a href="https://www.google.com/maps/dir//Temple+Coffee+Roasters,+2200+K+St,+Sacramento,+CA+95816" target="_blank" rel="noopener">Cómo Llegar →</a>
+        <a href="https://templecoffee.com/" target="_blank" rel="noopener">Visitar Sitio →</a>
+      </div>
+    </div>
+
+    <div class="explore-card reveal">
+      <h3 class="explore-name">Milka Coffee Roasters</h3>
+      <span class="explore-badge">Café y Pastelería</span>
+      <div class="explore-address">1501 G St, Sacramento, CA 95814 · Cierra a las 4 PM</div>
+      <p class="explore-desc">Un encantador tostador independiente con patio. Favorito local para café y pastelería excelente.</p>
+      <div class="explore-links">
+        <a href="https://maps.google.com/?q=1501+G+St+Sacramento+CA+95814" target="_blank" rel="noopener">Cómo Llegar →</a>
+        <a href="http://milkacurbside.com" target="_blank" rel="noopener">Visitar Sitio →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🍽 Comer y Beber -->
+  <div class="category-heading coral">🍽 Comer y Beber</div>
+  <div class="explore-grid">
+    <div class="explore-card coral reveal">
+      <h3 class="explore-name">Gunther's Ice Cream</h3>
+      <span class="explore-badge">Clásico de Sacramento</span>
+      <div class="explore-address">2801 Franklin Blvd, Sacramento, CA 95818</div>
+      <p class="explore-desc">Una institución de Sacramento desde los años 40. Helado artesanal hecho fresco diariamente — no te pierdas el 50/50 fruit freeze. Perfecto para toda la familia.</p>
+      <div class="explore-links">
+        <a href="https://maps.google.com/?q=2801+Franklin+Blvd+Sacramento+CA+95818" target="_blank" rel="noopener">Cómo Llegar →</a>
+      </div>
+    </div>
+
+    <div class="explore-card coral reveal">
+      <h3 class="explore-name">Kru Contemporary Japanese</h3>
+      <span class="explore-badge">Alta Cocina · Reservación Recomendada</span>
+      <div class="explore-address">3135 Folsom Blvd, Sacramento, CA 95816</div>
+      <p class="explore-desc">Cocina japonesa de alta gama y sushi excepcional. Uno de los mejores de Sacramento — haz una reservación con anticipación.</p>
+      <div class="explore-links">
+        <a href="https://maps.google.com/?q=3135+Folsom+Blvd+Sacramento+CA+95816" target="_blank" rel="noopener">Cómo Llegar →</a>
+      </div>
+    </div>
+
+    <div class="explore-card coral reveal">
+      <h3 class="explore-name">The Shady Lady Saloon</h3>
+      <span class="explore-badge">Cócteles Artesanales</span>
+      <div class="explore-address">1409 R St, Sacramento, CA 95811</div>
+      <p class="explore-desc">El saloon más chic de Sacramento. Ambiente acogedor, diseño hermoso y cócteles expertos. Imprescindible para el fin de semana con tema western.</p>
+      <div class="explore-links">
+        <a href="https://maps.google.com/?q=1409+R+St+Sacramento+CA+95811" target="_blank" rel="noopener">Cómo Llegar →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🌿 Explora y Relájate -->
+  <div class="category-heading sage">🌿 Explora y Relájate</div>
+  <div class="explore-grid">
+    <div class="explore-card sage reveal">
+      <h3 class="explore-name">Old Sacramento Waterfront</h3>
+      <span class="explore-badge">Distrito Histórico</span>
+      <div class="explore-address">Old Sacramento, CA 95814</div>
+      <p class="explore-desc">Calles empedradas, historia de la fiebre del oro, el Museo del Ferrocarril del Estado de California y el malecón. Perfecto para un paseo matutino o vespertino.</p>
+      <div class="explore-links">
+        <a href="https://maps.google.com/?q=Old+Sacramento+Waterfront+CA" target="_blank" rel="noopener">Cómo Llegar →</a>
+        <a href="https://www.visitsacramento.com/" target="_blank" rel="noopener">Visitar Sitio →</a>
+      </div>
+    </div>
+
+    <div class="explore-card sage reveal">
+      <h3 class="explore-name">Capitol Park y Edificio del Capitolio</h3>
+      <span class="explore-badge">Monumento · Gratis</span>
+      <div class="explore-address">1315 10th St, Sacramento, CA 95814</div>
+      <p class="explore-desc">Pasea por el hermoso Capitol Park y entra al icónico edificio del Capitolio — no se requiere tour para explorar los jardines y la gran rotonda.</p>
+      <div class="explore-links">
+        <a href="https://maps.google.com/?q=California+State+Capitol+Park+Sacramento" target="_blank" rel="noopener">Cómo Llegar →</a>
+      </div>
+    </div>
+
+    <div class="explore-card sage reveal">
+      <h3 class="explore-name">Roseville Galleria</h3>
+      <span class="explore-badge">Compras</span>
+      <div class="explore-address">1151 Galleria Blvd, Roseville, CA 95678</div>
+      <p class="explore-desc">El destino comercial principal de la región — a 20 minutos de Sacramento. Perfecto para un atuendo western chic de último minuto antes de la gran noche.</p>
+      <div class="explore-links">
+        <a href="https://maps.google.com/?q=Westfield+Roseville+Galleria+CA" target="_blank" rel="noopener">Cómo Llegar →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⛳ En el Campo de Golf -->
+  <div class="category-heading gold">⛳ En el Campo de Golf</div>
+  <div class="explore-grid">
+    <div class="explore-card gold reveal">
+      <h3 class="explore-name">Del Paso Country Club</h3>
+      <span class="explore-badge">Golf</span>
+      <div class="explore-address">3001 Marconi Ave, Sacramento, CA 95821</div>
+      <p class="explore-desc">Uno de los campos de golf más reconocidos de Sacramento. Una hermosa ronda en un entorno clásico de California — perfecto para la mañana antes de la fiesta.</p>
+      <div class="explore-links">
+        <a href="https://maps.google.com/?q=Del+Paso+Country+Club+Sacramento" target="_blank" rel="noopener">Cómo Llegar →</a>
+      </div>
+    </div>
+
+    <div class="explore-card gold reveal">
+      <h3 class="explore-name">Arden Hills Resort Club &amp; Spa</h3>
+      <span class="explore-badge">Golf y Spa</span>
+      <div class="explore-address">1220 Arden Hills Ln, Sacramento, CA 95864</div>
+      <p class="explore-desc">Una experiencia completa de resort con golf, spa y piscina. Ideal para invitados que quieren relajarse y recargar energías antes de las festividades de la noche.</p>
+      <div class="explore-links">
+        <a href="https://maps.google.com/?q=Arden+Hills+Resort+Club+Sacramento" target="_blank" rel="noopener">Cómo Llegar →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="explore-footer-link">
+    <a href="https://www.visitsacramento.com/" target="_blank" rel="noopener">Explora más en VisitSacramento.com →</a>
+  </div>
+</section>
+
+<!-- ═════════════ FOOTER ═════════════ -->
+<footer>
+  <div class="footer-name">Marisol Ibarra-Bouslama</div>
+  <div class="footer-degree">Escuela de Negocios de Posgrado de UC Davis · MBA · Clase del 2026</div>
+  <div class="footer-when">13 de junio de 2026 · Estate Farms · Sacramento, California</div>
+  <span class="footer-stars">✦  ✦  ✦</span>
+  <div class="footer-thanks">Gracias por cabalgar con nosotros.</div>
+</footer>
+
+<script>
+  // ─────────── Nav scroll show/hide ───────────
+  (function() {
+    const nav = document.getElementById('siteNav');
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    function update() {
+      const y = window.scrollY;
+      if (y > lastY && y > 80) {
+        nav.classList.add('hidden');
+      } else {
+        nav.classList.remove('hidden');
+      }
+      lastY = y;
+      ticking = false;
+    }
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+
+  // ─────────── Mobile menu ───────────
+  (function() {
+    const hamburger = document.getElementById('hamburgerBtn');
+    const menu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('mobileCloseBtn');
+
+    function openMenu() { menu.classList.add('open'); }
+    function closeMenu() { menu.classList.remove('open'); }
+
+    hamburger.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+  })();
+
+  // ─────────── IntersectionObserver fade-in ───────────
+  (function() {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => io.observe(el));
+  })();
+
+  // ─────────── Zelle copy button ───────────
+  (function() {
+    const btn = document.getElementById('zelle-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      const original = btn.textContent;
+      navigator.clipboard.writeText('3236812687').then(() => {
+        btn.textContent = '¡Copiado! ✓';
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      }).catch(() => {
+        const tmp = document.createElement('textarea');
+        tmp.value = '3236812687';
+        document.body.appendChild(tmp);
+        tmp.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(tmp);
+        btn.textContent = '¡Copiado! ✓';
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    });
+  })();
+</script>
+</body>
+</html>
